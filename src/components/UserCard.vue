@@ -26,33 +26,9 @@
       <h3 class="user-card__name">{{ fullName }}</h3>
     </div>
     <div class="user-card__body">
-      <ul class="user-card__info-list">
-        <li class="user-card__info-item">
-          <strong>Email:</strong> {{ user.email }}
-        </li>
-        <li class="user-card__info-item">
-          <strong>Phone:</strong> {{ user.phone }}
-        </li>
-        <li class="user-card__info-item">
-          <strong>Cell:</strong> {{ user.cell }}
-        </li>
-        <li class="user-card__info-item">
-          <strong>Gender:</strong> {{ user.gender }}
-        </li>
-        <li class="user-card__info-item">
-          <strong>Age:</strong> {{ user.dob.age }}
-        </li>
-        <li class="user-card__info-item">
-          <strong>Birthday:</strong> {{ formattedBirthday }}
-        </li>
-        <li class="user-card__info-item">
-          <strong>Address:</strong>
-          {{ address }}
-        </li>
-        <li class="user-card__info-item">
-          <strong>Timezone:</strong> {{ user.location.timezone.description }}
-        </li>
-      </ul>
+      <div class="user-card__info-item">
+        <strong>Email:</strong> {{ user.email }}
+      </div>
     </div>
   </div>
 </template>
@@ -69,18 +45,6 @@ const fullName = computed(() => {
   return `${props.user.name.title} ${props.user.name.first} ${props.user.name.last}`;
 });
 
-const address = computed(() => {
-  const { street, city, state, country } = props.user.location;
-  return `${street.number} ${street.name}, ${city}, ${state}, ${country}`;
-});
-
-const formattedBirthday = computed(() => {
-  return new Date(props.user.dob.date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-});
 </script>
 
 <style scoped lang="scss">
@@ -111,7 +75,6 @@ const formattedBirthday = computed(() => {
   color: #333;
 }
 
-/* Элементы body */
 .user-card__body {
   width: 100%;
 }
@@ -125,6 +88,7 @@ const formattedBirthday = computed(() => {
 .user-card__info-item {
   margin-bottom: 8px;
   font-size: 14px;
+  text-align: center;
 }
 
 .user-card__info-item strong {
