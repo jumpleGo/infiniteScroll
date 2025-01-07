@@ -1,0 +1,19 @@
+{
+  "source": {
+    "include": ["src"],
+    "exclude": ["node_modules"],
+    "includePattern": ".+\\.(ts|vue)$",
+    "excludePattern": "(^|\\/|\\\\)_|\\.d\\.ts$"
+
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "template": "node_modules/ink-docstrap/template"
+  },
+  "plugins": ["node_modules/jsdoc-babel", "plugins/markdown", "node_modules/jsdoc-vuejs"],
+  "babel": {
+    "extensions": [".ts"],
+    "presets": ["@babel/preset-typescript", "@babel/preset-env"]
+  }
+}

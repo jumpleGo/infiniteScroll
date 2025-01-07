@@ -6,7 +6,7 @@ export class Getter {
      * @returns {Promise<T>} The result of the request, typed as T.
      */
 
-    static async get<T> (query: string): Promise<T> {
+    static async get<T>(query: string): Promise<T> {
         const response =  await fetch(`${import.meta.env.VITE_USER_API_URL}/?${query}`)
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return response.json()
